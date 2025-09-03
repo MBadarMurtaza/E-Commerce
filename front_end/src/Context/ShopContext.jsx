@@ -53,9 +53,6 @@ const ShopContextProvider = ({ children }) => {
         body: JSON.stringify({ productId: itemId }),
       })
         .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        })
         .catch((error) => {
           console.error("Error adding to cart:", error);
         });
@@ -90,7 +87,6 @@ const ShopContextProvider = ({ children }) => {
           if (data.success) {
             setCartItems(data.cartData);
           }
-          console.log("Removed:", data);
         })
         .catch((error) => {
           console.error("Error removing from cart:", error);
@@ -120,7 +116,6 @@ const ShopContextProvider = ({ children }) => {
           if (data.success) {
             setCartItems(data.cartData);
           }
-          console.log("Deleted:", data);
         })
         .catch((error) => {
           console.error("Error deleting from cart:", error);
@@ -141,9 +136,7 @@ const ShopContextProvider = ({ children }) => {
     return totalItem;
   };
 
-  useEffect(() => {
-    console.log("Cart Updated:", cartItems);
-  }, [cartItems]);
+  useEffect(() => {}, [cartItems]);
   const contextValue = {
     all_product,
     cartItems,
